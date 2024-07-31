@@ -1,6 +1,6 @@
 {
   "name": "@spot-flow/vue-spotflow-checkout",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "dist/checkout.umd.js",
   "module": "dist/checkout.es.js",
@@ -39,5 +39,18 @@
     "vue-tsc": "^2.0.21"
   },
   "author": "Oluwatomisin Jimoh <jayoluwatosin@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spotflow-One/vue-spotflow-checkout"
+  },
+  "homepage": "https://github.com/Spotflow-One/vue-spotflow-checkout",
+  "bugs": {
+    "url": "https://github.com/Spotflow-One/vue-spotflow-checkout/issues"
+  },
+  "keywords": [
+    "vue",
+    "spotflow",
+    "checkout"
+  ]
 }
