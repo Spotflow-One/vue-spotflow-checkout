@@ -26,6 +26,14 @@ export default {
     amount: {
       type: Number,
       required: true
+    },
+    encryption: {
+      type: String,
+      required: true
+    },
+    planId: {
+      type: String,
+      required: true
     }
   },
   beforeMount() {
@@ -44,7 +52,8 @@ export default {
       }
       const checkout = window.SpotflowCheckout
       if (checkout) {
-        const payment = new checkout.CheckoutForm(this.merchantKey, this.email, this.amount)
+        //  constructor(merchantKey: string, encryption: string, email: string, amount: number, planId: string) {
+        const payment = new checkout.CheckoutForm(this.merchantKey, this.encryption, this.email, this.amount, this.planId)
         payment.setup()
       }
     }
