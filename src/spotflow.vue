@@ -47,16 +47,25 @@ export default {
 
   methods: {
     makePayment() {
-      if (this.merchantKey === undefined || this.email === undefined || this.amount === undefined) {
+      if (this.merchantKey === undefined || this.email === undefined ) {
         throw new Error('Merchant key, email and amount are required')
       }
       const checkout = window.SpotflowCheckout
       if (checkout) {
+        const payload = {
+        merchantKey: this.merchantKey,
+        encryptionKey: this.encryption,
+        planId: this.planId,
+        email: this.email,
+        amount: this.amount || 0,
+      }
         //  constructor(merchantKey: string, encryption: string, email: string, amount: number, planId: string) {
-        const payment = new checkout.CheckoutForm(this.merchantKey, this.encryption, this.email, this.amount, this.planId)
-        payment.setup()
+        const payment = new checkout.CheckoutForm(payload)
+        payment.setup(payload)
       }
     }
   }
 }
 </script>
+
+
