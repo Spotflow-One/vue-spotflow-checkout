@@ -41,37 +41,79 @@ To install the library, you can use either Yarn or npm. Choose the one that fits
 
 ## Usage
 
- ```sh
+ ```javascript
+<template>
+  <button @click="makePayment">
+    <slot></slot>
+  </button>
+</template>
 
- <script lang="ts">
-import checkout from "@spot-flow/vue-spotflow-checkout"
-
-export default {
-  components: {
-    checkout
-  },
-  data() {
-    return {
-      merchantKey: "<sk_test_f998479c0eedhXXXXXXXXXXXXXXXX>"
-      email: "temi@yopmail.com",
-      amount: 1000,
-      encryptionKey: "KDKDKXXXXXXXXXXXXXXXXXXXX"
-    };
-  },
+<script lang="ts">
+declare global {
+  interface Window {
+    SpotflowCheckout: {
+      CheckoutForm: any
+    }
+  }
 }
+export default {
+  name: 'VueSpotflow',
+  props: {
+    merchantKey: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      required: true
+    },
+    amount: {
+      type: Number,
+      required: true
+    },
+    encryption: {
+      type: String,
+      required: true
+    },
+    planId: {
+      type: String,
+      required: true
+    }
+  },
+  beforeMount() {
+    const script = document.createElement('script')
+    script.src = 'https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js'
+    script.onload = () => {
+      console.log('Library loaded')
+    }
+    document.head.appendChild(script)
+  },
 
+  methods: {
+    makePayment() {
+      if (this.merchantKey === undefined || this.email === undefined ) {
+        throw new Error('Merchant key, email and amount are required')
+      }
+      const checkout = window.SpotflowCheckout
+      if (checkout) {
+        const payload = {
+        merchantKey: this.merchantKey,
+        encryptionKey: this.encryption,
+        planId: this.planId,
+        email: this.email,
+        amount: this.amount || 0,
+      }
+        //  constructor(merchantKey: string, encryption: string, email: string, amount: number, planId: string) {
+        const payment = new checkout.CheckoutForm(payload)
+        payment.setup(payload)
+      }
+    }
+  }
+}
 </script>
 
-<template>
-  <checkout 
-     :amount="amount" 
-     :email="email" 
-     :merchantKey="merchantKey"
-     :encryptionKey="encryptionKey"
-  >
-    Make Payment
-  </checkout>
-</template>
+
+
   
  ```
 
@@ -81,7 +123,7 @@ Read more about our parameters and how they can be used [here](https://developer
 
 | Parameter           | Always Required ? |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| merchantKey         | True              | Your API public |
+| merchantKey         | True              | Your API secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
 | amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
 | currency            | False             | currency to charge in. Defaults to NGN                 |
