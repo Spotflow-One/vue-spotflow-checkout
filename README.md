@@ -35,13 +35,13 @@ To install the library, you can use either Yarn or npm. Choose the one that fits
 ### Using Yarn
 
 ```bash
-  yarn add @spot-flow/vue-spotflow-checkout
+yarn add @spot-flow/vue-spotflow-checkout
  ```
 
 ### Using NPM
 
 ```bash
-  npm install @spot-flow/vue-spotflow-checkout
+npm install @spot-flow/vue-spotflow-checkout
  ```
 
 ## Usage
