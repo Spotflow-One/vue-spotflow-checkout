@@ -5,6 +5,8 @@
 </template>
 
 <script lang="ts">
+import { getCdnFn, thisFn } from "./utils/get-cdn-file";
+
 declare global {
   interface Window {
     SpotflowCheckout: {
@@ -34,15 +36,13 @@ export default {
     planId: {
       type: String,
       required: true
+    },
+    currency: {
+      type: String
     }
   },
   beforeMount() {
-    const script = document.createElement('script')
-    script.src = 'https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js'
-    script.onload = () => {
-      console.log('Library loaded')
-    }
-    document.head.appendChild(script)
+    getCdnFn();
   },
 
   methods: {
@@ -58,10 +58,10 @@ export default {
         planId: this.planId,
         email: this.email,
         amount: this.amount || 0,
+        currency: this.currency
       }
-        //  constructor(merchantKey: string, encryption: string, email: string, amount: number, planId: string) {
-        const payment = new checkout.CheckoutForm(payload)
-        payment.setup(payload)
+      const payment = new checkout.CheckoutForm(payload)
+      payment.setup(payload)
       }
     }
   }
