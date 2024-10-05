@@ -12,6 +12,11 @@ Available Features:
 ## Table of Contents
 
 1. [Requirements](#requirements)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [License](#license)
+5. [Contributing Guidelines](#contribting-guidelines)
+6. [Contributors](#contributors)
 
 ## Requirements
 
@@ -41,104 +46,69 @@ To install the library, you can use either Yarn or npm. Choose the one that fits
 
 ## Usage
 
+
+**payment-component.vue**
+
  ```javascript
+
+
 <template>
-  <button @click="makePayment">
-    <slot></slot>
-  </button>
+  <h1>Payment Component</h1>
+  <div>
+    <checkout 
+      :amount="amount" 
+      :email="email" 
+      :merchantKey="merchantKey" 
+      :encryptionKey="encryptionKey" 
+      :planId="planId"
+    >
+      Make Payment
+    </checkout>
+  </div>
 </template>
 
-<script lang="ts">
-declare global {
-  interface Window {
-    SpotflowCheckout: {
-      CheckoutForm: any
-    }
-  }
-}
-export default {
-  name: 'VueSpotflow',
-  props: {
-    merchantKey: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    amount: {
-      type: Number,
-      required: true
-    },
-    encryption: {
-      type: String,
-      required: true
-    },
-    planId: {
-      type: String,
-      required: true
-    }
+ <script lang="ts">
+import checkout from "@spot-flow/vue-spotflow-checkout";
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  components: {
+    checkout,
   },
-  beforeMount() {
-    const script = document.createElement('script')
-    script.src = 'https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js'
-    script.onload = () => {
-      console.log('Library loaded')
-    }
-    document.head.appendChild(script)
+  data() {
+    return {
+      amount: 4000, 
+      email: "temi@mailinator.com", 
+      merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
+      encryptionKey: "SKKXXXXXXXXXXXXXXXXX", 
+      planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034"
+    };
   },
-
-  methods: {
-    makePayment() {
-      if (this.merchantKey === undefined || this.email === undefined ) {
-        throw new Error('Merchant key, email and amount are required')
-      }
-      const checkout = window.SpotflowCheckout
-      if (checkout) {
-        const payload = {
-        merchantKey: this.merchantKey,
-        encryptionKey: this.encryption,
-        planId: this.planId,
-        email: this.email,
-        amount: this.amount || 0,
-      }
-        //  constructor(merchantKey: string, encryption: string, email: string, amount: number, planId: string) {
-        const payment = new checkout.CheckoutForm(payload)
-        payment.setup(payload)
-      }
-    }
-  }
-}
-</script>
-
-
-
-  
+});
+</script> 
  ```
 
 ### Parameters
 
-Read more about our parameters and how they can be used [here](https://developer.flutterwave.com/docs/collecting-payments/inline).
+Read more about our parameters and how they can be used [here](https://docs.spotflow.one/Developer%20Tools/inline-js).
 
-| Parameter           | Always Required ? |Description     |
+| Parameter           | Required |Description     |
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| merchantKey         | True              | Your API secret |
+| merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
 | amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
-| currency            | False             | currency to charge in. Defaults to NGN                 |
+| currency            | False             | Currency to charge in. Defaults to NGN                 |
 | encryptionKey       | True               | This is the encryption key for the merchant |
 | planId   | True | This is the plan id being paid for  |
-| firstname | False | This is the Customer Preview Name |
-| lastname | False | This is the Customer Preview Last Name |
-| regionId | False | this is the merchant's region where the customer is subscribed to |
-| phone | False | This is the phone numbern of the customer |
+| firstname | False | This is the Customer's First Name |
+| lastname | False | This is the Customer's Last Name |
+| email | True | This is the Customer's Email Address |
+| regionId | False | This is the merchant's region where the customer is subscribed to |
+| phone | False | This is the phone number of the customer |
 
-## Contribting Guidelines
+## Contribution Guidelines
 
 We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
-
-## Supports
 
 ## License
 
@@ -149,4 +119,4 @@ Copyright (c) Spotflow Inc.
 ## Contributors
 
 - [Olukayode Ogunnowo](http://github.com/dansagam)
-- [Oluwatosin Jimoh](https://github.com/ekiira)
+- [Oluwatomisin Jimoh](https://github.com/ekiira)
