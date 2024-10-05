@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { getCdnFn, thisFn } from "./utils/get-cdn-file";
+import { getCdnFn } from "./utils/get-cdn-file";
 
 declare global {
   interface Window {
@@ -29,7 +29,7 @@ export default {
       type: Number,
       required: true
     },
-    encryption: {
+    encryptionKey: {
       type: String,
       required: true
     },
@@ -47,14 +47,14 @@ export default {
 
   methods: {
     makePayment() {
-      if (this.merchantKey === undefined || this.email === undefined ) {
-        throw new Error('Merchant key, email and amount are required')
+      if (this.merchantKey === undefined || this.email === undefined || this.encryptionKey === undefined ) {
+        throw new Error('Merchant key, Email and Encryption key are required')
       }
       const checkout = window.SpotflowCheckout
       if (checkout) {
         const payload = {
         merchantKey: this.merchantKey,
-        encryptionKey: this.encryption,
+        encryptionKey: this.encryptionKey,
         planId: this.planId,
         email: this.email,
         amount: this.amount || 0,
