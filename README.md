@@ -1,13 +1,13 @@
 
 # Spotflow Checkout Vue.Js
 
-This **Spotflow Vue.js library** wraps around the [inline library](https://github.com/Spotflow-One/spotflow-checkout-inline), which enables users to make payments seamlessly.
-It integrates smoothly into your Vue.js application, providing a streamlined checkout experience.
+This **Spotflow Vue.Js Library** wraps around the [inline library](https://github.com/Spotflow-One/spotflow-checkout-inline), which enables users to make payments seamlessly.
+It integrates smoothly into your Vue.Js application, providing a streamlined checkout experience.
 
 Available Features:
 
 - Collections: Card, Bank Transfers, USSD
-- Recurring payments: Tokenization and Subscriptions.
+- Recurring Payments: Tokenization and Subscriptions.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ Available Features:
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [License](#license)
-5. [Contributing Guidelines](#contribting-guidelines)
+5. [Contribution Guidelines](#contribution-guidelines)
 6. [Contributors](#contributors)
 
 ## Requirements
@@ -103,8 +103,8 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | firstname | False | This is the Customer's First Name |
 | lastname | False | This is the Customer's Last Name |
 | email | True | This is the Customer's Email Address |
-| regionId | False | This is the merchant's region where the customer is subscribed to |
-| phone | False | This is the phone number of the customer |
+| regionId (optional) | False | This is the merchant's region where the customer is subscribed to |
+| phone (optional) | False | This is the phone number of the customer |
 
 ## Contribution Guidelines
 
