@@ -67,9 +67,9 @@ npm install @spot-flow/vue-spotflow-checkout
   </div>
 </template>
 
- <script lang="ts">
+ <script>
 import checkout from "@spot-flow/vue-spotflow-checkout";
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {
