@@ -57,6 +57,7 @@ npm install @spot-flow/vue-spotflow-checkout
   <div>
     <checkout 
       :amount="amount" 
+      :currency="currency"
       :email="email" 
       :merchantKey="merchantKey" 
       :encryptionKey="encryptionKey" 
@@ -77,11 +78,12 @@ export default defineComponent({
   },
   data() {
     return {
-      amount: 4000, 
+      amount: 4000, // Not required for subscription payment
+      currency: "NGN", // Not required for subscription payment
       email: "temi@mailinator.com", 
       merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
       encryptionKey: "SKKXXXXXXXXXXXXXXXXX", 
-      planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034"
+      planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034" // Not required for a one time payment
     };
   },
 });
@@ -96,10 +98,10 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
-| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details    |
-| currency            | False             | Currency to charge in. Defaults to NGN                 |
+| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details. This is not required for subscription payments.    |
+| currency            | False             | Currency to charge in. Defaults to NGN. This is not required for subscription payments.                |
 | encryptionKey       | True               | This is the encryption key for the merchant |
-| planId   | True | This is the plan id being paid for  |
+| planId   | True | This is the plan id being paid for. This is not required for one time payments  |
 | firstname | False | This is the Customer's First Name |
 | lastname | False | This is the Customer's Last Name |
 | email | True | This is the Customer's Email Address |
