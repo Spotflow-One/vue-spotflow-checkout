@@ -1,13 +1,13 @@
 
-# Spotflow Checkout Vue.JS
+# Spotflow Checkout Vue.Js
 
-This **Spotflow Vue.JS Library** wraps around the [inline library](https://github.com/Spotflow-One/spotflow-checkout-inline), which enables users to make payments seamlessly.
-It integrates smoothly into your **Vue.JS** application, providing a streamlined checkout experience.
+This **Spotflow Vue.js library** wraps around the [inline library](https://github.com/Spotflow-One/spotflow-checkout-inline), which enables users to make payments seamlessly.
+It integrates smoothly into your Vue.js application, providing a streamlined checkout experience.
 
 Available Features:
 
 - Collections: Card, Bank Transfers, USSD
-- Recurring Payments: Tokenization and Subscriptions.
+- Recurring payments: Tokenization and Subscriptions.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ Available Features:
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [License](#license)
-5. [Contribution Guidelines](#contribution-guidelines)
+5. [Contributing Guidelines](#contribting-guidelines)
 6. [Contributors](#contributors)
 
 ## Requirements
@@ -57,6 +57,7 @@ npm install @spot-flow/vue-spotflow-checkout
   <div>
     <checkout 
       :amount="amount" 
+      :currency="currency"
       :email="email" 
       :merchantKey="merchantKey" 
       :encryptionKey="encryptionKey" 
@@ -69,7 +70,7 @@ npm install @spot-flow/vue-spotflow-checkout
 
  <script lang="ts">
 import checkout from "@spot-flow/vue-spotflow-checkout";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   components: {
@@ -77,11 +78,12 @@ export default defineComponent({
   },
   data() {
     return {
-      amount: 4000, 
+      amount: 4000, // Not required for subscription payment
+      currency: "NGN", // Not required for subscription payment
       email: "temi@mailinator.com", 
       merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
       encryptionKey: "SKKXXXXXXXXXXXXXXXXX", 
-      planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034"
+      planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034" // Not required for a one time payment
     };
   },
 });
@@ -96,15 +98,15 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
-| amount              | False              | Amount to charge the customer.    |
-| currency            | False             | Currency to charge in.                |
+| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details. This is not required for subscription payments.    |
+| currency            | False             | Currency to charge in. Defaults to NGN. This is not required for subscription payments.                |
 | encryptionKey       | True               | This is the encryption key for the merchant |
-| planId   | True | This is the plan id being paid for  |
+| planId   | True | This is the plan id being paid for. This is not required for one time payments  |
 | firstname | False | This is the Customer's First Name |
 | lastname | False | This is the Customer's Last Name |
 | email | True | This is the Customer's Email Address |
-| regionId (optional) | False | This is the merchant's region where the customer is subscribed to |
-| phone (optional) | False | This is the phone number of the customer |
+| regionId | False | This is the merchant's region where the customer is subscribed to |
+| phone | False | This is the phone number of the customer |
 
 ## Contribution Guidelines
 
