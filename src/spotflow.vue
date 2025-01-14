@@ -39,7 +39,16 @@ export default {
     },
     currency: {
       type: String
-    }
+    },
+    localCurrency: {
+      type: String
+    },
+    metadata: {
+      type: String
+    },
+    callbackUrl: {
+      type: String
+    },
   },
   beforeMount() {
     getCdnFn();
@@ -58,7 +67,10 @@ export default {
         planId: this.planId,
         email: this.email,
         amount: this.amount || 0,
-        currency: this.currency
+        currency: this.currency,
+        localCurrency: this.localCurrency
+        metadata: this.metadata,
+        callbackUrl: this.callbackUrl
       }
       const payment = new checkout.CheckoutForm(payload)
       payment.setup(payload)
