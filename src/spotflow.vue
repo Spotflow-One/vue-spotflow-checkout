@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+import type { PropType } from "vue";
 import { getCdnFn } from "./utils/get-cdn-file";
 
 declare global {
@@ -44,7 +45,7 @@ export default {
       type: String
     },
     metadata: {
-      type: Object,
+      type: Object as PropType<Record<string, any>>,
     },
     callBackUrl: {
       type: String
