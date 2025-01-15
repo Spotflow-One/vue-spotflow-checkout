@@ -5,6 +5,7 @@
 </template>
 
 <script lang="ts">
+import type { PropType } from "vue";
 import { getCdnFn } from "./utils/get-cdn-file";
 
 declare global {
@@ -39,7 +40,16 @@ export default {
     },
     currency: {
       type: String
-    }
+    },
+    localCurrency: {
+      type: String
+    },
+    metadata: {
+      type: Object as PropType<Record<string, any>>,
+    },
+    callBackUrl: {
+      type: String
+    },
   },
   beforeMount() {
     getCdnFn();
@@ -58,7 +68,10 @@ export default {
         planId: this.planId,
         email: this.email,
         amount: this.amount || 0,
-        currency: this.currency
+        currency: this.currency,
+        localCurrency: this.localCurrency,
+        metadata: this.metadata,
+        callBackUrl: this.callBackUrl
       }
       const payment = new checkout.CheckoutForm(payload)
       payment.setup(payload)
