@@ -44,9 +44,9 @@ export default {
       type: String
     },
     metadata: {
-      type: String
+      type: Object,
     },
-    callbackUrl: {
+    callBackUrl: {
       type: String
     },
   },
@@ -68,9 +68,9 @@ export default {
         email: this.email,
         amount: this.amount || 0,
         currency: this.currency,
-        localCurrency: this.localCurrency
+        localCurrency: this.localCurrency,
         metadata: this.metadata,
-        callbackUrl: this.callbackUrl
+        callBackUrl: this.callBackUrl
       }
       const payment = new checkout.CheckoutForm(payload)
       payment.setup(payload)
