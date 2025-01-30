@@ -65,8 +65,7 @@ npm install @spot-flow/vue-spotflow-checkout
       :localCurrency="localCurrency"
       :callBackUrl="callBackUrl"
       :metadata="{
-        title: "Product Name",
-        additionalProp: "Additional Prop"
+        productName: 'Product Name'
       }"
     >
       Make Payment
@@ -91,8 +90,7 @@ export default defineComponent({
       encryptionKey: "SKKXXXXXXXXXXXXXXXXX", 
       planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034", // Not required for a one time payment
       metadata: {
-        title: "Product Name",
-        additionalProps: "Additional Prop"
+        productName: "Product Name",
       },
       callBackUrl: "https://website.com",
       localCurrency: "NGN" // Not required if currency is already set to the local currency of the region
@@ -117,7 +115,7 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | firstname | False | This is the Customer's First Name |
 | lastname | False | This is the Customer's Last Name |
 | email | True | This is the Customer's Email Address |
-| metadata | False | This contains other information about the product such as the title and other additional properties |
+| metadata | False | This contains other information about the product such as the product name and other additional properties |
 | localCurrency | False | This is only required when a payment is being made in USD |
 | callBackUrl | False | This is the URL the browser redirects to on success of a payment |
 | regionId | False | This is the merchant's region where the customer is subscribed to |
