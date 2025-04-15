@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts">
-import type { PropType } from "vue";
-import { getCdnFn } from "./utils/get-cdn-file";
 
 declare global {
   interface Window {
@@ -45,40 +43,51 @@ export default {
       type: String
     },
     metadata: {
-      type: Object as PropType<Record<string, any>>,
+      type: Object
     },
     callBackUrl: {
       type: String
-    },
+    }
   },
   beforeMount() {
-    getCdnFn();
+    function getCdnFn() {
+      const script = document.createElement('script')
+      const inlineSdk = 'https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js'
+      script.src = inlineSdk
+      script.onload = () => {}
+      if (!document.querySelector(`[src="${inlineSdk}"]`)) {
+        document.head.appendChild(script)
+      }
+    }
+    getCdnFn()
   },
 
   methods: {
     makePayment() {
-      if (this.merchantKey === undefined || this.email === undefined || this.encryptionKey === undefined ) {
+      if (
+        this.merchantKey === undefined ||
+        this.email === undefined ||
+        this.encryptionKey === undefined
+      ) {
         throw new Error('Merchant key, Email and Encryption key are required')
       }
       const checkout = window.SpotflowCheckout
       if (checkout) {
         const payload = {
-        merchantKey: this.merchantKey,
-        encryptionKey: this.encryptionKey,
-        planId: this.planId,
-        email: this.email,
-        amount: this.amount || 0,
-        currency: this.currency,
-        localCurrency: this.localCurrency,
-        metadata: this.metadata,
-        callBackUrl: this.callBackUrl
-      }
-      const payment = new checkout.CheckoutForm(payload)
-      payment.setup(payload)
+          merchantKey: this.merchantKey,
+          encryptionKey: this.encryptionKey,
+          planId: this.planId,
+          email: this.email,
+          amount: this.amount || 0,
+          currency: this.currency,
+          localCurrency: this.localCurrency,
+          metadata: this.metadata,
+          callBackUrl: this.callBackUrl
+        }
+        const payment = new checkout.CheckoutForm(payload)
+        payment.setup(payload)
       }
     }
   }
 }
 </script>
-
-

@@ -65,8 +65,8 @@ npm install @spot-flow/vue-spotflow-checkout
       :localCurrency="localCurrency"
       :callBackUrl="callBackUrl"
       :metadata="{
-        title: "Product Name",
-        additionalProp: "Additional Prop"
+        productName: 'Product Name',
+        additionalProp: 'Additional Prop'
       }"
     >
       Make Payment
@@ -85,13 +85,13 @@ export default defineComponent({
   data() {
     return {
       amount: 4000, // Not required for subscription payment
-      currency: "NGN", // Not required for subscription payment
+      currency: "NGN",
       email: "temi@mailinator.com", 
       merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
       encryptionKey: "SKKXXXXXXXXXXXXXXXXX", 
       planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034", // Not required for a one time payment
       metadata: {
-        title: "Product Name",
+        productName: "Product Name",
         additionalProps: "Additional Prop"
       },
       callBackUrl: "https://website.com",
@@ -110,18 +110,17 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | merchantKey         | True              | Your API Secret |
 | reference           | False             | Your transaction reference. This MUST be unique for every transaction  |
-| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details. This is not required for subscription payments.    |
-| currency            | False             | Currency to charge in. Defaults to NGN. This is not required for subscription payments.                |
-| encryptionKey       | True               | This is the encryption key for the merchant |
-| planId   | True | This is the plan id being paid for. This is not required for one time payments  |
-| firstname | False | This is the Customer's First Name |
-| lastname | False | This is the Customer's Last Name |
+| amount              | False              | Amount to charge the customer. NB: this most likely comes from the plan details. This is not required for subscription payments.   |
+| currency            | True             | Currency to charge in.           |
+| localCurrency       | False            | This is only required when a payment is being made in USD  |
+| encryptionKey       | True               | This is the encryption key for the merchant. This is required for card payments. |
+| planId   | False | This is the plan ID being paid for however, this is not required for one time payments.   |
+| firstName | False | This is the Customer's First Name |
+| lastName | False | This is the Customer's Last Name |
+| phone | False | This is the Customer's Phone Number |
 | email | True | This is the Customer's Email Address |
-| metadata | False | This contains other information about the product such as the title and other additional properties |
-| localCurrency | False | This is only required when a payment is being made in USD |
+| metadata | True | This contains other information about the product such as the product name and other additional properties. Product Name should not be passed if planId is being passed |
 | callBackUrl | False | This is the URL the browser redirects to on success of a payment |
-| regionId | False | This is the merchant's region where the customer is subscribed to |
-| phone | False | This is the phone number of the customer |
 
 ## Contribution Guidelines
 
