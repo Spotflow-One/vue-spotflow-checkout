@@ -65,7 +65,8 @@ npm install @spot-flow/vue-spotflow-checkout
       :localCurrency="localCurrency"
       :callBackUrl="callBackUrl"
       :metadata="{
-        productName: 'Product Name'
+        productName: 'Product Name',
+        additionalProp: 'Additional Prop'
       }"
     >
       Make Payment
@@ -91,6 +92,7 @@ export default defineComponent({
       planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034", // Not required for a one time payment
       metadata: {
         productName: "Product Name",
+        additionalProps: "Additional Prop"
       },
       callBackUrl: "https://website.com",
       localCurrency: "NGN" // Not required if currency is already set to the local currency of the region
