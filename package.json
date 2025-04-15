@@ -1,6 +1,6 @@
 {
   "name": "@spot-flow/vue-spotflow-checkout",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "type": "module",
   "main": "dist/checkout.umd.js",
   "module": "dist/checkout.es.js",
