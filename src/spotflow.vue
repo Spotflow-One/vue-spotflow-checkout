@@ -1,93 +1,53 @@
 <template>
-  <button @click="makePayment">
+
+  <button ref="buttonRef" v-bind="$attrs" :disabled="disabled" :class="computedClass" :style="style"
+    @click="handleClick">
     <slot></slot>
   </button>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 
-declare global {
-  interface Window {
-    SpotflowCheckout: {
-      CheckoutForm: any
-    }
-  }
-}
-export default {
-  name: 'VueSpotflow',
-  props: {
-    merchantKey: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    amount: {
-      type: Number,
-      required: true
-    },
-    encryptionKey: {
-      type: String,
-      required: true
-    },
-    planId: {
-      type: String,
-      required: true
-    },
-    currency: {
-      type: String
-    },
-    localCurrency: {
-      type: String
-    },
-    metadata: {
-      type: Object
-    },
-    callBackUrl: {
-      type: String
-    }
-  },
-  beforeMount() {
-    function getCdnFn() {
-      const script = document.createElement('script')
-      const inlineSdk = 'https://dr4h9151gox1m.cloudfront.net/dist/checkout-inline.js'
-      script.src = inlineSdk
-      script.onload = () => {}
-      if (!document.querySelector(`[src="${inlineSdk}"]`)) {
-        document.head.appendChild(script)
-      }
-    }
-    getCdnFn()
-  },
+import { ref, computed } from 'vue'
+import { useSpotflowPayment } from './composables/useSpotflowPayment'
 
-  methods: {
-    makePayment() {
-      if (
-        this.merchantKey === undefined ||
-        this.email === undefined ||
-        this.encryptionKey === undefined
-      ) {
-        throw new Error('Merchant key, Email and Encryption key are required')
-      }
-      const checkout = window.SpotflowCheckout
-      if (checkout) {
-        const payload = {
-          merchantKey: this.merchantKey,
-          encryptionKey: this.encryptionKey,
-          planId: this.planId,
-          email: this.email,
-          amount: this.amount || 0,
-          currency: this.currency,
-          localCurrency: this.localCurrency,
-          metadata: this.metadata,
-          callBackUrl: this.callBackUrl
-        }
-        const payment = new checkout.CheckoutForm(payload)
-        payment.setup(payload)
-      }
-    }
-  }
+interface Props {
+  config: any
+  disabled?: boolean
+  class?: string | string[] | Record<string, boolean>
+  style?: string | Record<string, any>
 }
+
+
+const props = withDefaults(defineProps<Props>(), {
+  disabled: false
+})
+
+
+// This allows all native button attributes to pass through
+defineOptions({
+  inheritAttrs: false
+})
+
+const emit = defineEmits(['ready', 'error'])
+
+
+const buttonRef = ref<HTMLButtonElement | null>(null)
+const loadSpotflow = useSpotflowPayment()
+
+const computedClass = computed(() => {
+  return props.class
+})
+
+const handleClick = async (event: MouseEvent) => {
+  if (props.disabled) return
+  event.preventDefault()
+  await
+  loadSpotflow(props.config)
+}
+
+defineExpose({
+  buttonRef,
+})
+
 </script>

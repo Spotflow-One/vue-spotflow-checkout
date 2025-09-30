@@ -14,9 +14,6 @@ Available Features:
 1. [Requirements](#requirements)
 2. [Installation](#installation)
 3. [Usage](#usage)
-4. [License](#license)
-5. [Contributing Guidelines](#contribting-guidelines)
-6. [Contributors](#contributors)
 
 ## Requirements
 
@@ -84,12 +81,11 @@ export default defineComponent({
   },
   data() {
     return {
-      amount: 4000, // Not required for subscription payment
-      currency: "NGN",
+      amount: 100, // Not required for subscription payment
+      currency: "USD",
       email: "temi@mailinator.com", 
       merchantKey: "sk_test_fXXXXedhXXXXXXXXXXXXXXXX",
-      encryptionKey: "SKKXXXXXXXXXXXXXXXXX", 
-      planId: "9e0808304-344d-XXXXXXXXX-XXXXX834034", // Not required for a one time payment
+      encryptionKey: "SKKXXXXXXXXXXXXXXXXX", // Required for card payments
       metadata: {
         productName: "Product Name",
         additionalProps: "Additional Prop"
@@ -120,19 +116,5 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | phone | False | This is the Customer's Phone Number |
 | email | True | This is the Customer's Email Address |
 | metadata | True | This contains other information about the product such as the product name and other additional properties. Product Name should not be passed if planId is being passed |
-| callBackUrl | False | This is the URL the browser redirects to on success of a payment |
+| callBackUrl | False | This is the URL the browser redirects to on the success of a payment |
 
-## Contribution Guidelines
-
-We welcome contributions from the community. Read more about our community contribution guidelines [here](/CONTRIBUTION.md).
-
-## License
-
-By contributing to this library, you agree that your contributions will be licensed under its [MIT license](/LICENSE).
-
-Copyright (c) Spotflow Inc.
-
-## Contributors
-
-- [Olukayode Ogunnowo](http://github.com/dansagam)
-- [Oluwatomisin Jimoh](https://github.com/ekiira)
