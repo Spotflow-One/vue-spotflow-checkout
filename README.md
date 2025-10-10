@@ -153,7 +153,8 @@ We handle everything from global payment acceptance to compliance and settlement
 
 ## 💡 What You Can Contribute
 - Improve or add SDK functionality  
-- Write or improve API documentation  
+- Write or improve API documentation 
+- Spot bugs/improvements and write new issues (use [Issues Template] (./ISSUE_TEMPLATE.md) as a guide).
 - Add new language SDKs (Python, JS, Java, etc.)  
 - Fix typos, formatting, or examples  
 - Write tutorials or integration guides  

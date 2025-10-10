@@ -10,4 +10,4 @@ Contribute to:
 
 🗓 Event: October 1st – 31st  
 🎁 Rewards: GoLemon, SPAR, Amazon vouchers  
-📩 Questions? Contact dev@spotflow.one  
+📩 Questions? Contact devrel@spotflow.one  
