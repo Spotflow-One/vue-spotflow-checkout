@@ -135,3 +135,40 @@ Read more about our parameters and how they can be used [here](https://docs.spot
 | callBackUrl | False | This is the URL the browser redirects to on success of a payment |
 
 
+# 🎉 Spotflow Hacktoberfest 2025
+
+Welcome to **Spotflow’s open-source repositories** — part of this year’s **Hacktoberfest Challenge** by DigitalOcean!
+
+Spotflow is a global **Merchant of Record (MoR)** that simplifies payment processing for businesses worldwide.  
+We handle everything from global payment acceptance to compliance and settlement — empowering merchants to go global effortlessly.
+
+## 🚀 How to Participate
+
+1. Register for Hacktoberfest at [hacktoberfest.com](https://hacktoberfest.com)
+2. Fork this repository.
+3. Choose an issue labeled **`hacktoberfest`** or **`good first issue`**.
+4. Make your contribution (see [Contributing Guidelines](./CONTRIBUTING.md)).
+5. Open a pull request (PR).
+6. Once approved and merged — it counts toward your Hacktoberfest goal!
+
+## 💡 What You Can Contribute
+- Improve or add SDK functionality  
+- Write or improve API documentation  
+- Add new language SDKs (Python, JS, Java, etc.)  
+- Fix typos, formatting, or examples  
+- Write tutorials or integration guides  
+
+## 🏆 Rewards
+Top contributors will receive:
+- 🎫 Gift vouchers (Amazon, SPAR, GoLemon)
+- 💬 Social media recognition
+- 📜 Contributor certificates
+
+## 📅 Important Dates
+- **Event:** October 1 – October 31, 2025
+- **Application Deadline:** October 31, 2025
+
+## 🧠 Resources
+- Docs: [https://docs.spotflow.one](https://docs.spotflow.one)
+- API Playground: [https://spotflow.one](https://spotflow.one)
+- Sign up: [Spotflow Hacktoberfest Form](#)
