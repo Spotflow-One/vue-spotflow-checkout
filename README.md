@@ -172,4 +172,4 @@ Top contributors will receive:
 ## 🧠 Resources
 - Docs: [https://docs.spotflow.one](https://docs.spotflow.one)
 - API Playground: [https://www.spotflow.one/demo](https://www.spotflow.one/demo)
-- Sign up: [Spotflow Hacktoberfest Form](https://forms.gle/FNa68wcJWaJsqqhU9)
+- Sign up: [Spotflow Hacktoberfest Form](https://forms.gle/1UeAiu9c9GaPL67PA)
