@@ -19,7 +19,7 @@ Screenshots or screencast that you have followed your own manual testing steps.
 
 ## Link to Issue
 
-Fill the link to the issue you worked on GitHub if necessary
+Fill the link to the issue you worked on GitHub or in the side bar, "Development", link the issue you worked on.
 
 ## Add Hacktoberfest Accepted Label to Your PR
 
