@@ -148,7 +148,7 @@ We handle everything from global payment acceptance to compliance and settlement
 2. Fork this repository.
 3. Choose an issue labeled **`hacktoberfest`** or **`good first issue`**.
 4. Make your contribution (see [Contributing Guidelines](./CONTRIBUTING.md)).
-5. Open a pull request (PR) and add a "hacktoberfest-accepted" label to your PR.
+5. Open a pull request (PR) and add a **`hacktoberfest-accepted`** label to your PR.
 6. Once approved and merged — it counts toward your Hacktoberfest goal!
 
 ## 💡 What You Can Contribute
