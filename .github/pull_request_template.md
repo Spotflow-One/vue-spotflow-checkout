@@ -21,9 +21,9 @@ Screenshots or screencast that you have followed your own manual testing steps.
 
 Fill the link to the issue you worked on GitHub if necessary
 
-## Add Hacktoberfest Label to Your PR
+## Add Hacktoberfest Accepted Label to Your PR
 
-Add "hacktoberfest" label to your created PR
+Add "hacktoberfest-accepted" label to your created PR
 
 ## Any background context you want to provide?
 
