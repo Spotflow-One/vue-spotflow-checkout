@@ -5,11 +5,12 @@ We’re excited to have you join us for **Hacktoberfest 2025** 🎉
 
 ## 🔧 How to Contribute
 
-1. Fork the repository.
-2. Create a new branch: `feature/your-feature-name`.
+1. Fork and clone the repository.
+2. Checkout into the hacktoberfest-spotflow branch.
+2. Create your own branch from the branch: `feature/your-feature-name`.
 3. Work on an open issue (look for labels: `hacktoberfest`, `good first issue`, `documentation`, `enhancement`).
 4. Commit your changes and push.
-5. Open a pull request (PR) to the `main` branch.
+5. Open a pull request (PR) to the `hacktoberfest-spotflow` branch as the base branch.
 
 ## 🧩 Contribution Types
 - Code: SDK improvements, bug fixes, new integrations.
