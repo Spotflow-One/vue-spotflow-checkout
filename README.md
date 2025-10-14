@@ -159,12 +159,6 @@ We handle everything from global payment acceptance to compliance and settlement
 - Fix typos, formatting, or examples  
 - Write tutorials or integration guides  
 
-## 🏆 Rewards
-Top contributors will receive:
-- 🎫 Gift vouchers (Amazon, SPAR, GoLemon)
-- 💬 Social media recognition
-- 📜 Contributor certificates
-
 ## 📅 Important Dates
 - **Event:** October 1 – October 31, 2025
 - **Application Deadline:** October 31, 2025
