@@ -148,13 +148,13 @@ We handle everything from global payment acceptance to compliance and settlement
 2. Fork this repository.
 3. Choose an issue labeled **`hacktoberfest`** or **`good first issue`**.
 4. Make your contribution (see [Contributing Guidelines](./CONTRIBUTING.md)).
-5. Open a pull request (PR).
+5. Open a pull request (PR) and add a **`hacktoberfest-accepted`** label to your PR.
 6. Once approved and merged — it counts toward your Hacktoberfest goal!
 
 ## 💡 What You Can Contribute
 - Improve or add SDK functionality  
 - Write or improve API documentation 
-- Spot bugs/improvements and write new issues (use [Issues Template] (./ISSUE_TEMPLATE.md) as a guide).
+- Spot bugs/improvements and write new issues (use [Issues Template](./ISSUE_TEMPLATE.md) as a guide).
 - Add new language SDKs (Python, JS, Java, etc.)  
 - Fix typos, formatting, or examples  
 - Write tutorials or integration guides  
@@ -171,5 +171,5 @@ Top contributors will receive:
 
 ## 🧠 Resources
 - Docs: [https://docs.spotflow.one](https://docs.spotflow.one)
-- API Playground: [https://spotflow.one](https://spotflow.one)
-- Sign up: [Spotflow Hacktoberfest Form](#)
+- API Playground: [https://www.spotflow.one/demo](https://www.spotflow.one/demo)
+- Sign up: [Spotflow Hacktoberfest Form](https://forms.gle/5KXXiy7mR35ocahL6)
