@@ -55,7 +55,7 @@ export function useSpotflowPayment() {
     return libraryPromise
   }
   const loadSpotflow = async (options: SpotflowPaymentOptions) => {
-    const cdnUrl: string = 'https://v1.inline-checkout.spotflow.one/dist/checkout-inline.js'
+    const cdnUrl: string = 'https://v2.inline-checkout.spotflow.one/dist/checkout-inline.js'
     await loadCdnScript(cdnUrl)
 
     if (typeof window === 'undefined') {
