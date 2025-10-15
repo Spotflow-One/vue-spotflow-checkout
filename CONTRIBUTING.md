@@ -29,7 +29,7 @@ Clone the repo and install dependencies:
 git clone https://github.com/Spotflow-One/vue-spotflow-checkout.git
 cd vue-spotflow-checkout
 npm install
-npm run test
+npm run dev
 ```
 
 ## 🏁 Maintainers
