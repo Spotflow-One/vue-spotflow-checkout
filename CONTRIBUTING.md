@@ -28,8 +28,8 @@ Clone the repo and install dependencies:
 ```bash
 git clone https://github.com/Spotflow-One/vue-spotflow-checkout.git
 cd vue-spotflow-checkout
-npm install
-npm run test
+yarn install
+yarn dev
 ```
 
 ## 🏁 Maintainers

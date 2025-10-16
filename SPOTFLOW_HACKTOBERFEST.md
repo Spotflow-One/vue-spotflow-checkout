@@ -8,6 +8,5 @@ Contribute to:
 - Tutorials
 - Example integrations
 
-🗓 Event: October 1st – 31st  
-🎁 Rewards: GoLemon, SPAR, Amazon vouchers  
+🗓 Event: October 13th – 31st 
 📩 Questions? Contact devrel@spotflow.one  

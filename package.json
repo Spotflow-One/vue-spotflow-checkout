@@ -1,6 +1,6 @@
 {
   "name": "@spot-flow/vue-spotflow-checkout",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -27,7 +27,7 @@
     "build": "npm run clean && npm run build:index && npm run build:plugin && npm run build:types",
     "type-check": "vue-tsc",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write lib/"
   },
   "files": [
     "dist"
