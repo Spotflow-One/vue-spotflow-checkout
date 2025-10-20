@@ -1,0 +1,33 @@
+{
+  "name": "vue-spotflow-compatibility-tests",
+  "version": "1.0.0",
+  "description": "Compatibility testing suite for Vue Spotflow SDK across different Vue versions",
+  "private": true,
+  "scripts": {
+    "install:all": "npm run install:vue2 && npm run install:vue32 && npm run install:vue33 && npm run install:vue34",
+    "install:vue2": "cd vue2-options-test && npm install",
+    "install:vue32": "cd vue32-composition-test && npm install", 
+    "install:vue33": "cd vue33-composition-test && npm install",
+    "install:vue34": "cd vue34-composition-test && npm install",
+    "dev:vue2": "cd vue2-options-test && npm run dev",
+    "dev:vue32": "cd vue32-composition-test && npm run dev",
+    "dev:vue33": "cd vue33-composition-test && npm run dev", 
+    "dev:vue34": "cd vue34-composition-test && npm run dev",
+    "build:all": "npm run build:vue2 && npm run build:vue32 && npm run build:vue33 && npm run build:vue34",
+    "build:vue2": "cd vue2-options-test && npm run build",
+    "build:vue32": "cd vue32-composition-test && npm run build",
+    "build:vue33": "cd vue33-composition-test && npm run build",
+    "build:vue34": "cd vue34-composition-test && npm run build",
+    "test:compatibility": "echo 'Running compatibility tests across all Vue versions...' && npm run build:all",
+    "clean": "rm -rf */node_modules */dist"
+  },
+  "keywords": [
+    "vue",
+    "spotflow", 
+    "compatibility",
+    "testing",
+    "hacktoberfest"
+  ],
+  "author": "Spotflow Contributors",
+  "license": "ISC"
+}
