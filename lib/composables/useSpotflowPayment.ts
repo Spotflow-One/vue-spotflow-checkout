@@ -69,6 +69,7 @@ export function useSpotflowPayment() {
           resolve(window.SpotflowCheckout)
         } else if (Date.now() - startTime > timeout) {
           clearInterval(checkInterval)
+          libraryPromise = null
           reject(
             new Error(
               'SpotflowCheckout SDK not loaded after ' +
@@ -113,6 +114,7 @@ export function useSpotflowPayment() {
       gateway.value.destroy()
     }
     gateway.value = null
+    libraryPromise = null
   }
 
   onUnmounted(cleanup)
