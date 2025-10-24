@@ -101,11 +101,13 @@ export function useSpotflowPayment() {
 
         gateway.value.setup(options)
       } else {
+        const error = new Error('SpotflowCheckout SDK is not loaded')
         console.error('try to load popup error')
-        throw new Error('SpotflowCheckout SDK is not loaded')
+        throw error
       }
     } catch (error) {
       console.error('Error loading popup:', error)
+      throw error
     }
   }
 
