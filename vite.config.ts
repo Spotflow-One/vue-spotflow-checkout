@@ -6,7 +6,13 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [
     vue(),
-    dts({ tsconfigPath: './tsconfig.build.json', staticImport: true, rollupTypes: true })
+    dts({ 
+      tsconfigPath: './tsconfig.build.json', 
+      staticImport: true, 
+      rollupTypes: true,
+      insertTypesEntry: true,
+      copyDtsFiles: false
+    })
   ],
   resolve: {
     alias: {
@@ -16,17 +22,56 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/index.ts'),
-      formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs')
+      name: 'SpotflowVueCheckout',
+      formats: ['es', 'cjs', 'umd'],
+      fileName: (format) => {
+        switch (format) {
+          case 'es':
+            return 'index.js'
+          case 'cjs':
+            return 'index.cjs'
+          case 'umd':
+            return 'index.umd.js'
+          default:
+            return `index.${format}.js`
+        }
+      }
     },
     rollupOptions: {
       external: ['vue', 'nuxt/app'],
-      output: {
-        exports: 'named',
-        compact: false
-      }
+      output: [
+        {
+          format: 'es',
+          exports: 'named',
+          compact: false,
+          entryFileNames: 'index.js',
+          chunkFileNames: '[name]-[hash].js'
+        },
+        {
+          format: 'cjs',
+          exports: 'named',
+          compact: false,
+          entryFileNames: 'index.cjs'
+        },
+        {
+          format: 'umd',
+          name: 'SpotflowVueCheckout',
+          globals: {
+            vue: 'Vue'
+          },
+          entryFileNames: 'index.umd.js'
+        }
+      ]
     },
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    sourcemap: true,
+    minify: 'esbuild',
+    target: 'es2020',
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 500
+  },
+  define: {
+    __VERSION__: JSON.stringify(process.env.npm_package_version || '0.0.0')
   }
 })
