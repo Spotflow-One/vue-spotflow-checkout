@@ -1,16 +1,28 @@
 import { ref, onUnmounted } from 'vue'
 import type { SpotflowPaymentOptions } from '../types'
 
+/**
+ * Spotflow Checkout SDK interface definitions
+ */
+interface SpotflowCheckoutForm {
+  setup(options: SpotflowPaymentOptions): void
+  destroy?(): void
+}
+
+interface SpotflowCheckoutSDK {
+  CheckoutForm: new () => SpotflowCheckoutForm
+}
+
 declare global {
   interface Window {
-    SpotflowCheckout: any
+    SpotflowCheckout?: SpotflowCheckoutSDK
   }
 }
 
-let libraryPromise: Promise<any> | null = null
+let libraryPromise: Promise<SpotflowCheckoutSDK> | null = null
 
 export function useSpotflowPayment() {
-  const gateway = ref<any>(null)
+  const gateway = ref<SpotflowCheckoutForm | null>(null)
   let scriptPromise: Promise<void> | null = null
 
   const loadCdnScript = (cdnUrl: string) => {
@@ -50,13 +62,13 @@ export function useSpotflowPayment() {
 
     return scriptPromise
   }
-  const waitForLibrary = (timeout = 10000): Promise<any> => {
+  const waitForLibrary = (timeout = 10000): Promise<SpotflowCheckoutSDK> => {
     // Return existing promise if already waiting
     if (libraryPromise) {
       return libraryPromise
     }
 
-    libraryPromise = new Promise((resolve, reject) => {
+    libraryPromise = new Promise<SpotflowCheckoutSDK>((resolve, reject) => {
       if (window.SpotflowCheckout) {
         return resolve(window.SpotflowCheckout)
       }
