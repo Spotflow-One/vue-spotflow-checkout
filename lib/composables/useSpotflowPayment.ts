@@ -9,10 +9,46 @@ declare global {
 
 let libraryPromise: Promise<any> | null = null
 
+/**
+ * Vue composable for integrating Spotflow payment processing
+ * 
+ * This composable provides a seamless way to integrate Spotflow's payment gateway
+ * into your Vue.js application. It handles script loading, initialization, and
+ * provides a clean API for processing payments.
+ * 
+ * @returns {Function} A function to initiate payment processing
+ * 
+ * @example
+ * ```vue
+ * <script setup>
+ * import { useSpotflowPayment } from '@spot-flow/vue-spotflow-checkout'
+ * 
+ * const loadSpotflow = useSpotflowPayment()
+ * 
+ * const handlePayment = async () => {
+ *   const config = {
+ *     amount: 5000,
+ *     currency: "NGN",
+ *     email: "customer@example.com",
+ *     merchantKey: "sk_test_...",
+ *     encryptionKey: "...",
+ *   }
+ *   await loadSpotflow(config)
+ * }
+ * </script>
+ * ```
+ */
 export function useSpotflowPayment() {
   const gateway = ref<any>(null)
   let scriptPromise: Promise<void> | null = null
 
+  /**
+   * Dynamically loads the Spotflow Inline SDK script from CDN
+   * 
+   * @param {string} cdnUrl - The CDN URL for the Spotflow Inline SDK
+   * @returns {Promise<void>} Promise that resolves when script is loaded
+   * @throws {Error} When document is not available (SSR) or script fails to load
+   */
   const loadCdnScript = (cdnUrl: string) => {
     if (typeof document === 'undefined') {
       return Promise.reject(new Error('Document is not available'))
@@ -50,6 +86,13 @@ export function useSpotflowPayment() {
 
     return scriptPromise
   }
+  /**
+   * Waits for the SpotflowCheckout library to become available on the window object
+   * 
+   * @param {number} timeout - Maximum time to wait in milliseconds (default: 10000)
+   * @returns {Promise<any>} Promise that resolves with the SpotflowCheckout library
+   * @throws {Error} When library doesn't load within the timeout period
+   */
   const waitForLibrary = (timeout = 10000): Promise<any> => {
     // Return existing promise if already waiting
     if (libraryPromise) {
@@ -84,6 +127,27 @@ export function useSpotflowPayment() {
 
     return libraryPromise
   }
+  /**
+   * Initiates the Spotflow payment process
+   * 
+   * This function loads the Spotflow SDK, initializes the checkout form,
+   * and opens the payment modal with the provided configuration.
+   * 
+   * @param {SpotflowPaymentOptions} options - Payment configuration options
+   * @returns {Promise<void>} Promise that resolves when payment modal is displayed
+   * @throws {Error} When not running in browser environment or SDK fails to load
+   * 
+   * @example
+   * ```typescript
+   * await loadSpotflow({
+   *   amount: 5000,
+   *   currency: "NGN",
+   *   email: "customer@example.com",
+   *   merchantKey: "sk_test_...",
+   *   encryptionKey: "...",
+   * })
+   * ```
+   */
   const loadSpotflow = async (options: SpotflowPaymentOptions) => {
     if (typeof window === 'undefined' || typeof document === 'undefined') {
       throw new Error('SpotflowCheckout is only available in the browser')
@@ -111,6 +175,12 @@ export function useSpotflowPayment() {
     }
   }
 
+  /**
+   * Cleanup function to destroy payment gateway instance and reset state
+   * 
+   * This function is automatically called when the component is unmounted
+   * to prevent memory leaks and ensure proper cleanup.
+   */
   const cleanup = () => {
     if (gateway.value && typeof gateway.value.destroy === 'function') {
       gateway.value.destroy()
