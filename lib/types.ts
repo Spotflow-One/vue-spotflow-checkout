@@ -13,3 +13,32 @@ export type SpotflowPaymentOptions = {
   localCurrency?: string
   countryCode?: string
 }
+
+/**
+ * Supported currency codes for Spotflow payments
+ */
+export type SupportedCurrency = 'NGN' | 'USD' | 'GHS' | 'KES' | 'ZAR'
+
+/**
+ * Custom error types for better error handling
+ */
+export class SpotflowValidationError extends Error {
+  constructor(message: string, public field?: string) {
+    super(message)
+    this.name = 'SpotflowValidationError'
+  }
+}
+
+export class SpotflowLoadError extends Error {
+  constructor(message: string, public cause?: Error) {
+    super(message)
+    this.name = 'SpotflowLoadError'
+  }
+}
+
+export class SpotflowInitializationError extends Error {
+  constructor(message: string, public cause?: Error) {
+    super(message)
+    this.name = 'SpotflowInitializationError'
+  }
+}
